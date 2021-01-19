@@ -27,8 +27,8 @@ def nearest_11810818(input_file, dim):
             out_image[col, row] = in_image[round(x), round(y)]
 
     # Save image
-    io.imsave("nearest_11810818.tif", out_image)
+    io.imsave("shrank_nearest_11810818.tif", out_image)
 
 
 if __name__ == '__main__':
-    nearest_11810818("rice.tif", [461, 461])
+    nearest_11810818("rice.tif", [205, 205])

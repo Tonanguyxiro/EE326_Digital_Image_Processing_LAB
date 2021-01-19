@@ -17,11 +17,13 @@ def linear(x, y1, y2):
     else:
         return y2 + (1-x)*(y1-y2)
 
+
 def small_map(x, range):
     ratio = x/range
     return 0.01 + ratio*(range-0.02)
 
-def bilinear2_11810818(input_file, dim):
+
+def bilinear3_11810818(input_file, dim):
     # Load image
     in_image = io.imread(input_file)
     print(in_image)
@@ -37,18 +39,15 @@ def bilinear2_11810818(input_file, dim):
         for row in range(out_height):
             x = small_map(col*((in_width-1)/(out_width-1)), out_width)
             y = small_map(row*((in_height-1)/(out_height-1)), out_height)
+
             left=linear(y-math.floor(y), in_image[math.floor(x), math.floor(y)], in_image[math.floor(x), math.floor(y)+1])
             right=linear(y-math.floor(y), in_image[math.floor(x)+1, math.floor(y)], in_image[math.floor(x)+1, math.floor(y)+1])
-            horizontal=linear(x-math.floor(x), left, right)
-            top=linear(x-math.floor(x), in_image[math.floor(x), math.floor(y)], in_image[math.floor(x)+1, math.floor(y)])
-            bottom=linear(x-math.floor(x), in_image[math.floor(x), math.floor(y)+1], in_image[math.floor(x)+1, math.floor(y)+1])
-            vertical=linear(y-math.floor(y), top, bottom)
-            out_image[col, row] = round(0.5*(vertical+horizontal))
 
-    print(out_image)
+            out_image[col, row] = round(linear(x-math.floor(x), left, right))
+
     # Save Image
-    io.imsave("bilinear2_11810818.tif", out_image)
+    io.imsave("shrank_bilinear_11810818.tif", out_image)
 
 
 if __name__ == '__main__':
-    bilinear2_11810818("rice.tif", [461, 461])
+    bilinear3_11810818("rice.tif", [205, 205])
