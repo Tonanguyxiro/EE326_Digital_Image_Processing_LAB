@@ -11,9 +11,16 @@ from skimage import io, data
 import math
 from scipy import interpolate
 
+
 def small_map2(x, range):
-    ratio = x/range
-    return 3.01 + ratio*(range-8.02)
+    ratio = (x-1)/(range)
+    return 2.01 + ratio*(range-4.02)
+
+
+def find_value(x, y, pix_x):
+    f = interpolate.interp1d(x, y, kind='cubic')
+    return f(pix_x)
+
 
 def bicubic_11810818(input_file, dim):
     # Load image
@@ -24,22 +31,31 @@ def bicubic_11810818(input_file, dim):
     in_height = in_image.shape[1]
     out_image = np.zeros(dim, dtype=np.uint8)
 
+    print(in_image)
+
     # Perform Exchange
     for col in range(out_width):
         for row in range(out_height):
             pix_x = small_map2(col*((in_width-1)/(out_width-1)), out_width)
             pix_y = small_map2(row*((in_height-1)/(out_height-1)), out_height)
-            x=[math.floor(pix_x)-1, math.floor(pix_x), math.floor(pix_x)+1, math.floor(pix_x)+2]
-            y=[math.floor(pix_y)-1, math.floor(pix_y), math.floor(pix_y)+1, math.floor(pix_y)+2]
-            z=in_image[math.floor(pix_x)-1:math.floor(pix_x)+3, math.floor(pix_y)-1:math.floor(pix_y)+3]
-            f = interpolate.interp2d(x, y, z, kind='cubic')
+            line = np.zeros(4)
+            for i in range(4):
+                line[i] = find_value(
+                    [math.floor(pix_y) - 1, math.floor(pix_y), math.floor(pix_y) + 1, math.floor(pix_y) + 2],
+                    in_image[math.floor(pix_x)-1+i, math.floor(pix_y)-1:math.floor(pix_y)+3],
+                    pix_y
+                )
 
-            out_image[col, row] = f(col, row)
+            out_image[col, row] = find_value(
+                [math.floor(pix_x)-1, math.floor(pix_x), math.floor(pix_x)+1, math.floor(pix_x)+2],
+                line,
+                pix_x
+            )
 
     # Save Image
     print(out_image)
-    io.imsave("bicubic_11810818.tif", out_image)
+    io.imsave("shrank_bicubic_11810818.tif", out_image)
 
 
 if __name__ == '__main__':
-    bicubic_11810818("rice.tif", [461, 461])
+    bicubic_11810818("rice.tif", [205, 205])
