@@ -32,17 +32,17 @@ def hist_equ_11810818(input_image):
 
     # Count input
     for i in range(256):
-        input_hist.append(np.sum(input_image == i))
+        input_hist.append(np.sum(input_image == i)/number_of_pixel)
     # print(input_hist)
 
     # histogram equalization
     for i in range(m):
         for j in range(n):
-            output_image[i, j] = ((256-1)/number_of_pixel)*sum(input_hist, input_image[i, j])
+            output_image[i, j] = ((256-1))*sum(input_hist, input_image[i, j])
 
     # Count output
     for i in range(256):
-        output_hist.append(np.sum(output_image == i))
+        output_hist.append(np.sum(output_image == i)/number_of_pixel)
     
 
     return (output_image, output_hist, input_hist)
@@ -73,6 +73,10 @@ if __name__ == '__main__':
     fig2, [in_2, out_2] = plt.subplots(1, 2)
     in_2.plot(np.arange(256), input_hist_2)
     out_2.plot(np.arange(256), output_hist_2)
+
+    plt.show()
+
+    
 
 
 
