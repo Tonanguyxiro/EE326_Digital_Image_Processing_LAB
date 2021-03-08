@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 def sum(histogram, index):
     sum = 0
     for i in range(index):
-        sum = sum + histogram[i]
+        sum += histogram[i]
     # print(sum)
     return sum
 
@@ -22,6 +22,15 @@ def match(histogram, pixel):
             return i
 
     return 0;
+
+def spec_hist():
+    spec_hist = np.full((256), 1/256)
+
+    spec_hist[200:255] = spec_hist[200:255]*5
+
+    spec_hist = spec_hist/np.sum(spec_hist)
+
+    return spec_hist
 
 def hist_match_11810818(input_image, spec_hist):
 
@@ -47,9 +56,11 @@ def hist_match_11810818(input_image, spec_hist):
 
 
     # histogram matching
-    G_z = np.zeros((256,), dtype=np.uint8)
+    G_z = np.zeros((256), dtype=np.uint8)
+    
 
     for i in range(256):
+        # print((256-1)*sum(spec_hist, i))
         G_z[i] = (256-1)*sum(spec_hist, i)
     print(G_z)
 
@@ -67,7 +78,8 @@ def hist_match_11810818(input_image, spec_hist):
 
 if __name__ == '__main__':
 
-    [output_image_1, output_hist_1, input_hist_1] = hist_match_11810818(io.imread("Q3_2.tif"), np.full((256,), 1/256))
+    
+    [output_image_1, output_hist_1, input_hist_1] = hist_match_11810818(io.imread("Q3_2.tif"), spec_hist())
     
     # Print result
     io.imsave("Q3_2_11810818.tif", output_image_1)
@@ -76,5 +88,7 @@ if __name__ == '__main__':
     fig1, [in_1, out_1] = plt.subplots(1, 2)
     in_1.plot(np.arange(256), input_hist_1)
     out_1.plot(np.arange(256), output_hist_1)
+
+    plt.show()
 
 
