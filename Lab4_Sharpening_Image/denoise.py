@@ -21,10 +21,11 @@ def reduce_SAP_11810818(input_image, n_size):
                         pixels[j2*n_size+i2] = input_image[i-step+i2, j-step+j2]
 
             # print(pixels)
-            pixels = np.sort(pixels, axis=None)
+            # pixels = np.sort(pixels, axis=None)
             # print(pixels)
 
-            output_image[i, j] = pixels[(int)((n_size*n_size-1)/2)]
+            # output_image[i, j] = pixels[(int)((n_size*n_size-1)/2)]
+            output_image[i, j] = np.average(pixels)
 
 
     return output_image

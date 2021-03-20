@@ -26,15 +26,13 @@ def unsharp_masking_11810818(input_image):
                     
             output_image[i, j] = np.dot(operator, local)
 
-    output_image = np.clip(output_image, 0, 255)
+    # output_image = np.clip(output_image, 0, 255)
 
-    output_image = input_image - output_image
+    output_image = input_image + output_image
     output_image = np.clip(output_image, 0, 255)
 
     output_image = output_image.astype(np.uint8)
 
-
-    
     return output_image
 
 if __name__ == '__main__':
