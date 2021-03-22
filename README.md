@@ -4,6 +4,8 @@
 
 This project is the lab exercise of cource **EE326 Digital Image Processing** in **Southern University of Science and Technology**
 
+For discussion, you can contact me by `yuant2018@mail.sustech.edu.cn`
+
 ## LAB 1: Numpy and matplotlib
 
 In this course we will learn to install anaconda and use numpy as well as matplotlib which you cannot use in the following labs.
@@ -36,3 +38,8 @@ Implement the local histogram equalization to the input images Q3_3.tif.
 ### Task IV
 
 Implement an algorithm to reduce the salt-and-pepper noise of an image. The input image is Q3_4.tif.
+
+## Lab 4:
+
+
+## Lab 5:
