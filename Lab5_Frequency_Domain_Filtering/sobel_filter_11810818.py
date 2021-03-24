@@ -33,7 +33,6 @@ def sobel_filter_11810818(input_image):
     filtered_2 = np.real(np.fft.ifft2(np.fft.fft2(input_image_padded) * np.fft.fft2(DFT_kernel_2)))[m1-600:m1, n1-600:n1]
 
     io.imsave("Q5_1_frequency_mask.tif", EE326_SUSTech.format_image(filtered_1 + filtered_2))
-
     io.imsave("Q5_1_frequency_filtered.tif", EE326_SUSTech.format_image(filtered_1 + filtered_2 + input_image))
 
 

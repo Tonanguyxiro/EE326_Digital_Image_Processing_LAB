@@ -107,8 +107,15 @@ def transform_centering(input_image):
 def generating_from_spatial_filter(input_filter, P, Q):
     output_filter = np.zeros(P, Q)
 
-
     return output_filter
+
+
+def gaussian_filter(shape, sigma):
+    x, y = [edge /2 for edge in shape]
+    grid = np.array([[((i**2+j**2)/(2.0*sigma**2)) for i in range(-x, x+1)] for j in range(-y, y+1)])
+    g_filter = np.exp(-grid)/(2*np.pi*sigma**2)
+    g_filter /= np.sum(g_filter)
+    return g_filter
 
 
 if __name__ == '__main__':
