@@ -8,8 +8,9 @@ import math
 from scipy import interpolate
 import matplotlib.pyplot as plt
 
+
 # General
-def format(input_image):
+def format_image(input_image):
     output_image = np.clip(input_image, 0, 255)
     output_image = output_image.astype(np.uint8)
 

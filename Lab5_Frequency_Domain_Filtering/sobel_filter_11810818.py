@@ -16,10 +16,10 @@ def sobel_filter_11810818(input_image):
     output_spatial = EE326_SUSTech.convolution_3x3(input_image, kernel1)
     output_spatial += EE326_SUSTech.convolution_3x3(input_image, kernel2)
 
-    io.imsave("Q5_1_spatial_mask.tif", EE326_SUSTech.format(output_spatial))
+    io.imsave("Q5_1_spatial_mask.tif", EE326_SUSTech.format_image(output_spatial))
 
     output_spatial += input_image
-    io.imsave("Q5_1_spatial_filtered.tif", EE326_SUSTech.format(output_spatial))
+    io.imsave("Q5_1_spatial_filtered.tif", EE326_SUSTech.format_image(output_spatial))
 
     # Filtering in the Frequency Domain
     input_image_padded = EE326_SUSTech.zero_padding_DFT(input_image)
@@ -32,9 +32,9 @@ def sobel_filter_11810818(input_image):
     filtered_1 = np.real(np.fft.ifft2(np.fft.fft2(input_image_padded) * np.fft.fft2(DFT_kernel_1)))[m1-600:m1, n1-600:n1]
     filtered_2 = np.real(np.fft.ifft2(np.fft.fft2(input_image_padded) * np.fft.fft2(DFT_kernel_2)))[m1-600:m1, n1-600:n1]
 
-    io.imsave("Q5_1_frequency_mask.tif", EE326_SUSTech.format(filtered_1 + filtered_2))
+    io.imsave("Q5_1_frequency_mask.tif", EE326_SUSTech.format_image(filtered_1 + filtered_2))
 
-    io.imsave("Q5_1_frequency_filtered.tif", EE326_SUSTech.format(filtered_1 + filtered_2 + input_image))
+    io.imsave("Q5_1_frequency_filtered.tif", EE326_SUSTech.format_image(filtered_1 + filtered_2 + input_image))
 
 
 if __name__ == '__main__':
