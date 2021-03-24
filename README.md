@@ -43,3 +43,28 @@ Implement an algorithm to reduce the salt-and-pepper noise of an image. The inpu
 
 
 ## Lab 5:
+
+### Task I
+**Implement the Sobel filter to the input images Q5_1.tif in both spatial domain and frequency domain.**
+
+Compare the results. Refer to slides 78 to 81 of Lecture 4
+
+**Steps for Filtering in the Frequency Domain**
+
+1. Given an input image $f(x,y)$ of size M x N, obtain the padding parameters P and Q. Typically, P = 2M and Q = 2N.
+2. Form a padded image, $f_p(x,y)$ of size P x Q by appending the necessary number of zeros to f (x,y)
+3. Multiply $f_p (x,y)$ by $(-1)^{x+y}$ to center its transform
+4. Compute the DFT, F(u,v) of the image from step 3
+5. Generate a real, symmetric filter function*, H(u,v), of size P x Q with center at coordinates (P/2, Q/2)
+6. Form the product G(u,v) = H(u,v)F(u,v) using array multiplication
+7. Obtain the processed image
+8. Obtain the final processed result, g(x,y), by extracting the M x N region from the top, left quadrant of $g_p (x,y)$
+
+
+
+### Task II
+Implement the Gaussian low pass and high pass to the input image Q5_2.tif. results for 𝐷 0 = 30 , 60 , and 160, respectively.
+
+### Task III
+Implement the Butterworth notch filters to the input images Q5_3.tif. 114 of Lecture 4.
+
