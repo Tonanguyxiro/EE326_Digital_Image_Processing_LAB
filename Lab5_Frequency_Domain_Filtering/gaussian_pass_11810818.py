@@ -12,6 +12,7 @@ def gaussian_pass_11810818(input_image):
     input_image = EE326_SUSTech.zero_padding_DFT(input_image)
     x, y = input_image.shape
     input_image = np.fft.fft2(input_image)
+    # io.imsave("Q5_2_spectrum.tif", EE326_SUSTech.format_image(np.real(input_image)))
 
     for sigma in [1, 10, 30, 60, 160]:
         filter_lowpass = EE326_SUSTech.gaussian_filter(x, y, sigma)

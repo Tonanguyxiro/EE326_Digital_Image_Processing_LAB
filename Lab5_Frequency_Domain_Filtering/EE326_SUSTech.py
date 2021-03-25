@@ -131,7 +131,17 @@ def gaussian_filter(a, b, sigma):
     return g
 
 
+def butterworth_filter(b, a, n, sigma):
+    x, y = np.meshgrid(np.linspace(0, a - 1, a), np.linspace(0, b - 1, b))
+    print(x)
+    x = x - a / 2
+    y = y - b / 2
+    d = np.sqrt(x * x + y * y)
+    h = 1/(1+(d/sigma)**(2*n))
+    return h
+
+
 if __name__ == '__main__':
 
-    io.imsave("gaussian_filter_test.tif", format_image(gaussian_filter(100, 100, 30)))
+    io.imsave("butterworth_filter_test.tif", format_image(butterworth_filter(100, 100, 2, 30)))
 
