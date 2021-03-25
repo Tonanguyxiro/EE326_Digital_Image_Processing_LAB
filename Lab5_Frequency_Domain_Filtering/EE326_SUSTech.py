@@ -11,7 +11,9 @@ import matplotlib.pyplot as plt
 
 # General
 def format_image(input_image):
-    output_image = np.clip(input_image, 0, 255)
+    output_image = input_image
+    output_image -= np.min(output_image)
+    output_image = (output_image/np.max(output_image))*255
     output_image = output_image.astype(np.uint8)
 
     return output_image
@@ -72,6 +74,13 @@ def zero_padding(input_image, P, Q):
 
 # LAB 5
 
+def extract_result(input_image):
+    x, y = input_image.shape
+    output_image = input_image[int(x/2):x, int(y/2):y]
+
+    return output_image
+
+
 def zero_padding_DFT(input_image, P, Q):
     m,n = input_image.shape
 
@@ -79,6 +88,7 @@ def zero_padding_DFT(input_image, P, Q):
     output_image[0:m, 0:n] = input_image
 
     return output_image
+
 
 def zero_padding_DFT(input_image):
     m,n = input_image.shape
@@ -90,6 +100,7 @@ def zero_padding_DFT(input_image):
     output_image[0:m, 0:n] = input_image
 
     return output_image
+
 
 def transform_centering(input_image):
     m, n = input_image.shape
@@ -110,18 +121,17 @@ def generating_from_spatial_filter(input_filter, P, Q):
     return output_filter
 
 
-def gaussian_filter(shape, sigma):
-    x, y = [edge /2 for edge in shape]
-    grid = np.array([[((i**2+j**2)/(2.0*sigma**2)) for i in range(-x, x+1)] for j in range(-y, y+1)])
-    g_filter = np.exp(-grid)/(2*np.pi*sigma**2)
-    g_filter /= np.sum(g_filter)
-    return g_filter
+def gaussian_filter(a, b, sigma):
+    x, y = np.meshgrid(np.linspace(0, a-1, a), np.linspace(0, b-1, b))
+    x = x - a/2
+    y = y - b/2
+    d = x * x + y * y
+    g = np.exp(-(d / (2.0 * sigma ** 2)))
+    # g = g/np.sum(g)
+    return g
 
 
 if __name__ == '__main__':
 
-    test_input = np.array([[1, 2, 3], [1, 2, 3]])
-    m, n = test_input.shape
-    test_output = zero_padding_DFT(test_input, 2*m, 2*n)
+    io.imsave("gaussian_filter_test.tif", format_image(gaussian_filter(100, 100, 30)))
 
-    print(test_output)
