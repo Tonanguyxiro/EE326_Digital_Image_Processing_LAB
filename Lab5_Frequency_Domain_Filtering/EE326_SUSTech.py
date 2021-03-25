@@ -74,15 +74,22 @@ def zero_padding(input_image, P, Q):
 
 # LAB 5
 
-def extract_result(input_image):
+def extract_result_eastsouth(input_image):
     x, y = input_image.shape
     output_image = input_image[int(x/2):x, int(y/2):y]
 
     return output_image
 
 
+def extract_result_westnorth(input_image):
+    x, y = input_image.shape
+    output_image = input_image[0:int(x/2), 0:int(y/2)]
+
+    return output_image
+
+
 def zero_padding_DFT(input_image, P, Q):
-    m,n = input_image.shape
+    m, n = input_image.shape
 
     output_image = np.zeros([P, Q])
     output_image[0:m, 0:n] = input_image
@@ -136,7 +143,7 @@ def butterworth_filter(b, a, n, sigma):
     x = x - a / 2
     y = y - b / 2
     d = np.sqrt(x * x + y * y)
-    h = 1/(1+(d/sigma)**(2*n))
+    h = 1/((1+(d/sigma))**(2*n))
     return h
 
 

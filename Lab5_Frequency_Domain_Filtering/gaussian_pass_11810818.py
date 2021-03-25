@@ -23,16 +23,21 @@ def gaussian_pass_11810818(input_image):
         output_image = np.fft.ifftshift(output_image_frquency)
         output_image = np.real(np.fft.ifft2(output_image))
 
-        io.imsave("Q5_2_lowpass_filter_"+str(sigma)+".tif", EE326_SUSTech.format_image(filter_lowpass))
-        io.imsave("Q5_2_lowpass_"+str(sigma)+".tif", EE326_SUSTech.format_image(output_image))
+        io.imsave("Q5_2_lowpass_filter_"+str(sigma)+".tif",
+                  EE326_SUSTech.format_image(filter_lowpass))
+        io.imsave("Q5_2_lowpass_"+str(sigma)+".tif",
+                  EE326_SUSTech.extract_result_westnorth(EE326_SUSTech.format_image(output_image)))
 
         filter_highpass = np.ones((x, y)) - filter_lowpass
         output_image_frquency = np.multiply(input_image, filter_highpass)
         output_image = np.fft.ifftshift(output_image_frquency)
         output_image = np.real(np.fft.ifft2(output_image))
 
-        io.imsave("Q5_2_highpass_" + str(sigma) + ".tif", EE326_SUSTech.format_image(output_image))
-        io.imsave("Q5_2_hignpass_filter_" + str(sigma) + ".tif", EE326_SUSTech.format_image(filter_highpass))
+        io.imsave("Q5_2_highpass_filter_" + str(sigma) + ".tif",
+                  EE326_SUSTech.format_image(filter_highpass))
+        io.imsave("Q5_2_highpass_" + str(sigma) + ".tif",
+                  EE326_SUSTech.extract_result_westnorth(EE326_SUSTech.format_image(output_image)))
+
 
 
 if __name__ == '__main__':
