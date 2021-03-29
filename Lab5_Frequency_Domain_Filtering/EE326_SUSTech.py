@@ -58,6 +58,7 @@ def zero_padding(input_image, P, Q):
 
 # LAB 5
 
+
 def extract_result_eastsouth(input_image):
     x, y = input_image.shape
     output_image = input_image[int(x/2):x, int(y/2):y]
@@ -93,22 +94,21 @@ def zero_padding_DFT(input_image):
     return output_image
 
 
-def transform_centering(input_image):
-    m, n = input_image.shape
-    output_image = input_image
+def centering(size):
+    m, n = size
+    centering_matrix = np.ones(size)
     mul1 = 1
     for i in range(m):
         mul2 = mul1
         for j in range(n):
-            output_image[i, j] = input_image[i, j] * mul2
+            centering_matrix[i, j] = centering_matrix[i, j] * mul2
             mul2 *= -1
         mul1 *= -1
-    return output_image
+    return centering_matrix
 
 
 def generating_from_spatial_filter(input_filter, P, Q):
     output_filter = np.zeros(P, Q)
-
 
     return output_filter
 
@@ -123,7 +123,8 @@ def gaussian_filter(a, b, sigma):
     return g
 
 
-def butterworth_filter(b, a, cx, cy, n, sigma):
+def butterworth_filter(b, a, center, n, sigma):
+    cx, cy = center
     x, y = np.meshgrid(np.linspace(0, a - 1, a), np.linspace(0, b - 1, b))
     x = x - cx
     y = y - cy
