@@ -138,14 +138,13 @@ def gaussian_filter(a, b, sigma):
     return g
 
 
-def butterworth_filter(b, a, n, sigma):
+def butterworth_filter(b, a, cx, cy, n, sigma):
     x, y = np.meshgrid(np.linspace(0, a - 1, a), np.linspace(0, b - 1, b))
-    x = x - a / 2
-    y = y - b / 2
+    x = x - cx
+    y = y - cy
     d = np.sqrt(x * x + y * y)
     h = 1/((1+(d/sigma))**(2*n))
     return h
-
 
 if __name__ == '__main__':
 

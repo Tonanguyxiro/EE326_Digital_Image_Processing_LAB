@@ -13,28 +13,23 @@ def butterworth_notch_filters_11810818(input_image):
     input_image = np.fft.fft2(input_image)
     input_image = np.fft.fftshift(input_image)
 
+    show_image = np.log(np.abs(input_image))
+    plt.imshow(show_image)
+    plt.show()
+    plt.imsave("Q5_3_spectrum.png", show_image)
+
     for sigma in [1, 10, 30, 60, 160]:
             n = 1
-            filter_lowpass = EE326_SUSTech.butterworth_filter(x, y, n, sigma)
+            filter_lowpass = EE326_SUSTech.butterworth_filter(x, y, x/2, y/2, n, sigma)
             output_image_frquency = np.multiply(input_image, filter_lowpass)
-            output_image = np.fft.ifftshift(output_image_frquency)
-            output_image = np.real(np.fft.ifft2(output_image))
+            output_image = np.fft.fftshift(output_image_frquency)
 
-            io.imsave("Q5_3_lowpass_filter_" + str(sigma) + ".tif",
+            output_image = np.abs(np.fft.ifft2(output_image))
+
+            io.imsave("Q5_3_filter_" + str(sigma) + ".tif",
                       EE326_SUSTech.format_image(filter_lowpass))
-            io.imsave("Q5_3_lowpass_" + str(sigma) + ".tif",
+            io.imsave("Q5_3_" + str(sigma) + ".tif",
                       EE326_SUSTech.extract_result_westnorth(EE326_SUSTech.format_image(output_image)))
-
-            filter_highpass = np.ones((x, y)) - filter_lowpass
-            output_image_frquency = np.multiply(input_image, filter_highpass)
-            output_image = np.fft.ifftshift(output_image_frquency)
-            output_image = np.real(np.fft.ifft2(output_image))
-
-            io.imsave("Q5_3_highpass_filter_" + str(sigma) + ".tif",
-                      EE326_SUSTech.format_image(filter_highpass))
-            io.imsave("Q5_3_highpass_" + str(sigma) + ".tif",
-                     EE326_SUSTech.extract_result_westnorth(EE326_SUSTech.format_image(output_image)))
-
 
 
 if __name__ == '__main__':
