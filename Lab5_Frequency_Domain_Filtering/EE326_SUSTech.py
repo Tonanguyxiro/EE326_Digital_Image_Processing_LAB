@@ -14,36 +14,20 @@ def format_image(input_image):
     output_image = input_image
     output_image -= np.min(output_image)
     output_image = (output_image/np.max(output_image))*255
-    output_image = output_image.astype(np.uint8)
-
     return output_image
 
 # LAB 4
 
+
 def convolution_3x3(input_image, operator_3x3):
     col, row = input_image.shape
     output_image = np.zeros([col, row])
-
-    operator = np.zeros(9)
-    for i in range(3):
-        for j in range(3):
-            operator[i*3+j] = operator_3x3[i, j]
-
-    for i in range(col):
-        for j in range(row):
-            local = np.zeros(9)
-            index = 0
-            for i2 in [-1, 0, 1]:
-                for j2 in [-1, 0, 1]:
-                    if (i + i2 < 0 or i + i2 > col - 1 or j + j2 < 0 or j + j2 > row - 1):
-                        local[index] = 0
-                    else:
-                        local[index] = input_image[i + i2, j + j2]
-                    index += 1
-
-            output_image[i, j] = np.dot(operator, local)
-
-    output_image = output_image.astype(np.uint8)
+    input_image = np.pad(input_image, 1)
+    for i in range(0, col):
+        for j in range(0, row):
+            for i2 in range(3):
+                for j2 in range(3):
+                    output_image[i, j] += input_image[i+i2, j+j2] * operator_3x3[i2, j2]
 
     return output_image
 
@@ -124,6 +108,7 @@ def transform_centering(input_image):
 
 def generating_from_spatial_filter(input_filter, P, Q):
     output_filter = np.zeros(P, Q)
+
 
     return output_filter
 

@@ -16,8 +16,6 @@ def unsharp_masking_11810818(input_image):
 
     operator1 = np.array([-1, -2, -1, 0, 0, 0, 1, 2, 1])
     operator2 = np.array([-1, 0, 1, -2, 0, -2, -1, 0, 1])
-    
-
 
     for i in range(m):
         for j in range(n):
