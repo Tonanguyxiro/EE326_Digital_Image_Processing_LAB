@@ -1,12 +1,12 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2021.3.2)  2 APR 2021 22:30
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2021.3.2)  2 APR 2021 22:39
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/frquency_domain_filtering_11810818.tex
-(/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/frquency_domain_filtering_11810818.tex
+**/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.tex
+(/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.tex
 LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-02-18> (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/style/fphw.cls
+L3 programming layer <2021-02-18> (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/style/fphw.cls
 
 LaTeX Warning: You have requested document class `style/fphw',
                but the document class provides `fphw'.
@@ -74,7 +74,7 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@dimlist=\toks17
 )
 \problembox=\box48
-) (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/style/userpackage.tex (/usr/local/texlive/2020/texmf-dist/tex/latex/base/inputenc.sty
+) (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/style/userpackage.tex (/usr/local/texlive/2020/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2020/08/01 v1.3d Input encoding file
 \inpenc@prehook=\toks18
 \inpenc@posthook=\toks19
@@ -327,7 +327,7 @@ Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 )
 runsystem(uname -s > "frquency_domain_filtering_11810818.w18")...executed.
 
- (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/frquency_domain_filtering_11810818.w18)
+ (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.w18)
 runsystem(rm -- "frquency_domain_filtering_11810818.w18")...executed.
 
 ) (/usr/local/texlive/2020/texmf-dist/tex/generic/xstring/xstring.sty (/usr/local/texlive/2020/texmf-dist/tex/generic/xstring/xstring.tex
@@ -630,7 +630,7 @@ File: l3backend-xetex.def 2021-02-18 L3 backend support: XeTeX
 \g__pdf_backend_object_int=\count320
 \g__pdf_backend_annotation_int=\count321
 \g__pdf_backend_link_int=\count322
-) (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/frquency_domain_filtering_11810818.aux
+) (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.aux
 
 LaTeX Warning: Label `Q5_2_lowpass_30_error.tif' multiply defined.
 
@@ -740,30 +740,30 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 File: chart/shift.png Graphic file (type bmp)
 <chart/shift.png>
  [3] [4]
-File: plots2/Q5_1_spectrum_noshift.png Graphic file (type bmp)
-<plots2/Q5_1_spectrum_noshift.png>
-File: plots2/Q5_1_spectrum.png Graphic file (type bmp)
-<plots2/Q5_1_spectrum.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_spectrum_noshift.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_spectrum_noshift.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_spectrum.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_spectrum.png>
 File: chart/padding.png Graphic file (type bmp)
 <chart/padding.png>
  [5]
 File: plots/Q5_1.png Graphic file (type bmp)
 <plots/Q5_1.png>
-File: plots2/Q5_1_spatial.png Graphic file (type bmp)
-<plots2/Q5_1_spatial.png>
-File: plots2/Q5_1_spectrum.png Graphic file (type bmp)
-<plots2/Q5_1_spectrum.png>
-File: plots2/Q5_1_filter.png Graphic file (type bmp)
-<plots2/Q5_1_filter.png>
-File: plots2/Q5_1_frequency.png Graphic file (type bmp)
-<plots2/Q5_1_frequency.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_spatial.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_spatial.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_spectrum.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_spectrum.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_filter.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_filter.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_frequency.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_frequency.png>
  [6] [7]
 File: plots/Q5_2.png Graphic file (type bmp)
 <plots/Q5_2.png>
 File: chart/Gaussian.png Graphic file (type bmp)
 <chart/Gaussian.png>
-File: plots2/Q5_2_lowpass_filter_30.png Graphic file (type bmp)
-<plots2/Q5_2_lowpass_filter_30.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_filter_30.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_filter_30.png>
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
 (Font)              scaled to size 11.40997pt on input line 243.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
@@ -776,66 +776,66 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 8.33606pt on input line 243.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 6.25204pt on input line 243.
-File: plots2/Q5_2_lowpass_filter_60.png Graphic file (type bmp)
-<plots2/Q5_2_lowpass_filter_60.png>
-File: plots2/Q5_2_lowpass_filter_160.png Graphic file (type bmp)
-<plots2/Q5_2_lowpass_filter_160.png>
-File: plots2/Q5_2_lowpass_30.png Graphic file (type bmp)
-<plots2/Q5_2_lowpass_30.png>
-File: plots2/Q5_2_lowpass_60.png Graphic file (type bmp)
-<plots2/Q5_2_lowpass_60.png>
-File: plots2/Q5_2_lowpass_160.png Graphic file (type bmp)
-<plots2/Q5_2_lowpass_160.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_filter_60.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_filter_60.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_filter_160.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_filter_160.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_30.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_30.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_60.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_60.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_160.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_160.png>
  [8]
-File: plots2/Q5_2_highpass_filter_30.png Graphic file (type bmp)
-<plots2/Q5_2_highpass_filter_30.png>
-File: plots2/Q5_2_highpass_filter_60.png Graphic file (type bmp)
-<plots2/Q5_2_highpass_filter_60.png>
-File: plots2/Q5_2_highpass_filter_160.png Graphic file (type bmp)
-<plots2/Q5_2_highpass_filter_160.png>
-File: plots2/Q5_2_highpass_30.png Graphic file (type bmp)
-<plots2/Q5_2_highpass_30.png>
-File: plots2/Q5_2_highpass_60.png Graphic file (type bmp)
-<plots2/Q5_2_highpass_60.png>
-File: plots2/Q5_2_highpass_160.png Graphic file (type bmp)
-<plots2/Q5_2_highpass_160.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_highpass_filter_30.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_highpass_filter_30.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_highpass_filter_60.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_highpass_filter_60.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_highpass_filter_160.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_highpass_filter_160.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_highpass_30.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_highpass_30.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_highpass_60.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_highpass_60.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_highpass_160.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_highpass_160.png>
  [9] [10]
 File: plots/Q5_3.png Graphic file (type bmp)
 <plots/Q5_3.png>
 File: chart/Butterworth.png Graphic file (type bmp)
 <chart/Butterworth.png>
  [11]
-File: plots2/Q5_2_spectrum.png Graphic file (type bmp)
-<plots2/Q5_2_spectrum.png>
-File: plots2/Q5_3_filter_1_30.png Graphic file (type bmp)
-<plots2/Q5_3_filter_1_30.png>
-File: plots2/Q5_3_spectrum_filtered_1_30.png Graphic file (type bmp)
-<plots2/Q5_3_spectrum_filtered_1_30.png>
-File: plots2/Q5_3_1_10.png Graphic file (type bmp)
-<plots2/Q5_3_1_10.png>
-File: plots2/Q5_3_1_30.png Graphic file (type bmp)
-<plots2/Q5_3_1_30.png>
-File: plots2/Q5_3_1_60.png Graphic file (type bmp)
-<plots2/Q5_3_1_60.png>
-File: plots2/Q5_3_1_120.png Graphic file (type bmp)
-<plots2/Q5_3_1_120.png>
-File: plots2/Q5_3_2_10.png Graphic file (type bmp)
-<plots2/Q5_3_2_10.png>
-File: plots2/Q5_3_2_30.png Graphic file (type bmp)
-<plots2/Q5_3_2_30.png>
-File: plots2/Q5_3_2_60.png Graphic file (type bmp)
-<plots2/Q5_3_2_60.png>
-File: plots2/Q5_3_2_120.png Graphic file (type bmp)
-<plots2/Q5_3_2_120.png>
-File: plots2/Q5_3_2_10.png Graphic file (type bmp)
-<plots2/Q5_3_2_10.png>
-File: plots2/Q5_3_2_30.png Graphic file (type bmp)
-<plots2/Q5_3_2_30.png>
-File: plots2/Q5_3_2_60.png Graphic file (type bmp)
-<plots2/Q5_3_2_60.png>
-File: plots2/Q5_3_2_120.png Graphic file (type bmp)
-<plots2/Q5_3_2_120.png>
- [12] [13] [14] (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/_minted-frquency_domain_filtering_11810818/default-pyg-prefix.pygstyle) (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/_minted-frquency_domain_filtering_11810818/default.pygstyle) (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/_minted-frquency_domain_filtering_11810818/88328F6D1F98EF46FD9292CB27E2FA0B36EA7347DA55D95626224B63EAAE71BF.pygtex
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_spectrum.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_spectrum.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_filter_1_30.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_filter_1_30.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_spectrum_filtered_1_30.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_spectrum_filtered_1_30.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_10.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_10.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_30.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_30.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_60.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_60.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_120.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_120.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_10.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_10.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_30.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_30.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_60.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_60.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_120.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_120.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_10.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_10.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_30.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_30.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_60.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_60.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_120.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_2_120.png>
+ [12] [13] [14] (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/_minted-frquency_domain_filtering_11810818/default-pyg-prefix.pygstyle) (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/_minted-frquency_domain_filtering_11810818/default.pygstyle) (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/_minted-frquency_domain_filtering_11810818/88328F6D1F98EF46FD9292CB27E2FA0B36EA7347DA55D95626224B63EAAE71BF.pygtex
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1.
  (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -882,7 +882,7 @@ Underfull \vbox (badness 10000) detected at line 512
 Overfull \vbox (5.21622pt too high) detected at line 512
  []
 
-[17] (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/_minted-frquency_domain_filtering_11810818/64FC5A54B0A51B4EB894AE3B0BCD185CE7C49B6AC684DC0A212E6FD053689DBC.pygtex) [18] (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/_minted-frquency_domain_filtering_11810818/0810C17E6E9EF0AA8C793A776443B4DCA544416275D6C137E3724A9859E9FB94.pygtex) [19] (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/_minted-frquency_domain_filtering_11810818/3B50122CF963A04E07934B95D2D79466A4C73497A68F7C1CEE6A0440E2DA78EC.pygtex) [20]
+[17] (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/_minted-frquency_domain_filtering_11810818/64FC5A54B0A51B4EB894AE3B0BCD185CE7C49B6AC684DC0A212E6FD053689DBC.pygtex) [18] (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/_minted-frquency_domain_filtering_11810818/0810C17E6E9EF0AA8C793A776443B4DCA544416275D6C137E3724A9859E9FB94.pygtex) [19] (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/_minted-frquency_domain_filtering_11810818/3B50122CF963A04E07934B95D2D79466A4C73497A68F7C1CEE6A0440E2DA78EC.pygtex) [20]
 Underfull \vbox (badness 10000) detected at line 518
  []
 
@@ -890,18 +890,18 @@ Underfull \vbox (badness 10000) detected at line 518
 Underfull \vbox (badness 10000) detected at line 518
  []
 
-[21] [22] (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/frquency_domain_filtering_11810818.aux)
+[21] [22] (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12139 strings out of 476939
- 212082 string characters out of 5822581
- 601697 words of memory out of 5000000
+ 12141 strings out of 476939
+ 230498 string characters out of 5822581
+ 601987 words of memory out of 5000000
  31847 multiletter control sequences out of 15000+600000
  444973 words of font info for 117 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 90i,11n,91p,1168b,626s stack positions out of 5000i,500n,10000p,500000b,80000s
+ 90i,11n,91p,1140b,626s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/frquency_domain_filtering_11810818/frquency_domain_filtering_11810818.xdv (22 pages, 85248 bytes).
+Output written on /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.xdv (22 pages, 89668 bytes).
