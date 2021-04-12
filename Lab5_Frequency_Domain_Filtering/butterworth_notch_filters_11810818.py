@@ -21,8 +21,8 @@ def butterworth_notch_filters_11810818(input_image):
                   show_image,
                   cmap=cm.gray)
 
-    for sigma in [10, 30, 60, 90, 120, 160]:
-        for n in [1, 2, 3]:
+    for sigma in [10]:
+        for n in [1]:
             centers = [
                 [109, 87],
                 [109, 170],

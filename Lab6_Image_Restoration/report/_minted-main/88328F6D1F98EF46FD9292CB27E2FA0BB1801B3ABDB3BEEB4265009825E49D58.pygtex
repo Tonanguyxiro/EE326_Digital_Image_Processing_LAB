@@ -1,0 +1,140 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+\PYG{l+s+sd}{Library USE for EE326 2021}
+\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{skimage} \PYG{k+kn}{import} \PYG{n}{io}\PYG{p}{,} \PYG{n}{data}
+\PYG{k+kn}{import} \PYG{n+nn}{math}
+\PYG{k+kn}{from} \PYG{n+nn}{scipy} \PYG{k+kn}{import} \PYG{n}{interpolate}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+
+
+\PYG{c+c1}{\PYGZsh{} General}
+\PYG{k}{def} \PYG{n+nf}{format\PYGZus{}image}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{):}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{\PYGZhy{}=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{min}\PYG{p}{(}\PYG{n}{output\PYGZus{}image}\PYG{p}{)}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{p}{(}\PYG{n}{output\PYGZus{}image}\PYG{o}{/}\PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{output\PYGZus{}image}\PYG{p}{))}\PYG{o}{*}\PYG{l+m+mi}{255}
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}image}
+
+\PYG{c+c1}{\PYGZsh{} LAB 4}
+
+
+\PYG{k}{def} \PYG{n+nf}{convolution\PYGZus{}3x3}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{n}{operator\PYGZus{}3x3}\PYG{p}{):}
+    \PYG{n}{col}\PYG{p}{,} \PYG{n}{row} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{([}\PYG{n}{col}\PYG{p}{,} \PYG{n}{row}\PYG{p}{])}
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{pad}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{col}\PYG{p}{):}
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{row}\PYG{p}{):}
+            \PYG{k}{for} \PYG{n}{i2} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{):}
+                \PYG{k}{for} \PYG{n}{j2} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{):}
+                    \PYG{n}{output\PYGZus{}image}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{input\PYGZus{}image}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{n}{i2}\PYG{p}{,} \PYG{n}{j}\PYG{o}{+}\PYG{n}{j2}\PYG{p}{]} \PYG{o}{*} \PYG{n}{operator\PYGZus{}3x3}\PYG{p}{[}\PYG{n}{i2}\PYG{p}{,} \PYG{n}{j2}\PYG{p}{]}
+
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}image}
+
+
+\PYG{k}{def} \PYG{n+nf}{sobel\PYGZus{}filter}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{):}
+
+    \PYG{n}{operator1} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{],} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]])}
+    \PYG{n}{operator2} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{],} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{],} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]])}
+
+    \PYG{n}{output\PYGZus{}image1} \PYG{o}{=} \PYG{n}{convolution\PYGZus{}3x3}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{n}{operator1}\PYG{p}{)}
+    \PYG{n}{output\PYGZus{}image2} \PYG{o}{=} \PYG{n}{convolution\PYGZus{}3x3}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{n}{operator2}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{}}
+    \PYG{c+c1}{\PYGZsh{} output\PYGZus{}image1 = np.clip(output\PYGZus{}image1, 0, 255)}
+    \PYG{c+c1}{\PYGZsh{} output\PYGZus{}image2 = np.clip(output\PYGZus{}image2, 0, 255)}
+
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{output\PYGZus{}image1} \PYG{o}{+} \PYG{n}{output\PYGZus{}image2} \PYG{c+c1}{\PYGZsh{} + input\PYGZus{}image}
+    \PYG{c+c1}{\PYGZsh{} output\PYGZus{}image = np.clip(output\PYGZus{}image, 0, 255)}
+
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{output\PYGZus{}image}\PYG{o}{.}\PYG{n}{astype}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{uint8}\PYG{p}{)}
+
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}image}
+
+
+\PYG{k}{def} \PYG{n+nf}{zero\PYGZus{}padding}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{n}{P}\PYG{p}{,} \PYG{n}{Q}\PYG{p}{):}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{([}\PYG{n}{P}\PYG{p}{,} \PYG{n}{Q}\PYG{p}{])}
+
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}image}
+
+\PYG{c+c1}{\PYGZsh{} LAB 5}
+
+
+\PYG{k}{def} \PYG{n+nf}{extract\PYGZus{}result\PYGZus{}eastsouth}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{):}
+    \PYG{n}{x}\PYG{p}{,} \PYG{n}{y} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{p}{[}\PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{x}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{):}\PYG{n}{x}\PYG{p}{,} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{y}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{):}\PYG{n}{y}\PYG{p}{]}
+
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}image}
+
+
+\PYG{k}{def} \PYG{n+nf}{extract\PYGZus{}result\PYGZus{}westnorth}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{):}
+    \PYG{n}{x}\PYG{p}{,} \PYG{n}{y} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{x}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{),} \PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{y}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{)]}
+
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}image}
+
+
+\PYG{k}{def} \PYG{n+nf}{zero\PYGZus{}padding\PYGZus{}DFT}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{n}{P}\PYG{p}{,} \PYG{n}{Q}\PYG{p}{):}
+    \PYG{n}{m}\PYG{p}{,} \PYG{n}{n} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}
+
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{([}\PYG{n}{P}\PYG{p}{,} \PYG{n}{Q}\PYG{p}{])}
+    \PYG{n}{output\PYGZus{}image}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{m}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{n}\PYG{p}{]} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}
+
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}image}
+
+
+\PYG{k}{def} \PYG{n+nf}{zero\PYGZus{}padding\PYGZus{}DFT}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{):}
+    \PYG{n}{m}\PYG{p}{,}\PYG{n}{n} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}
+
+    \PYG{n}{P} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{m}
+    \PYG{n}{Q} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{n}
+
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{([}\PYG{n}{P}\PYG{p}{,} \PYG{n}{Q}\PYG{p}{])}
+    \PYG{n}{output\PYGZus{}image}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{m}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{n}\PYG{p}{]} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}
+
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}image}
+
+
+\PYG{k}{def} \PYG{n+nf}{centering}\PYG{p}{(}\PYG{n}{size}\PYG{p}{):}
+    \PYG{n}{m}\PYG{p}{,} \PYG{n}{n} \PYG{o}{=} \PYG{n}{size}
+    \PYG{n}{centering\PYGZus{}matrix} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{ones}\PYG{p}{(}\PYG{n}{size}\PYG{p}{)}
+    \PYG{n}{mul1} \PYG{o}{=} \PYG{l+m+mi}{1}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{m}\PYG{p}{):}
+        \PYG{n}{mul2} \PYG{o}{=} \PYG{n}{mul1}
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+            \PYG{n}{centering\PYGZus{}matrix}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{centering\PYGZus{}matrix}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{*} \PYG{n}{mul2}
+            \PYG{n}{mul2} \PYG{o}{*=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+        \PYG{n}{mul1} \PYG{o}{*=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+    \PYG{k}{return} \PYG{n}{centering\PYGZus{}matrix}
+
+
+\PYG{k}{def} \PYG{n+nf}{generating\PYGZus{}from\PYGZus{}spatial\PYGZus{}filter}\PYG{p}{(}\PYG{n}{input\PYGZus{}filter}\PYG{p}{,} \PYG{n}{P}\PYG{p}{,} \PYG{n}{Q}\PYG{p}{):}
+    \PYG{n}{output\PYGZus{}filter} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{P}\PYG{p}{,} \PYG{n}{Q}\PYG{p}{)}
+
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}filter}
+
+
+\PYG{k}{def} \PYG{n+nf}{gaussian\PYGZus{}filter}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{sigma}\PYG{p}{):}
+    \PYG{n}{x}\PYG{p}{,} \PYG{n}{y} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{meshgrid}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{a}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{a}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{b}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{b}\PYG{p}{))}
+    \PYG{n}{x} \PYG{o}{=} \PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{n}{a}\PYG{o}{/}\PYG{l+m+mi}{2}
+    \PYG{n}{y} \PYG{o}{=} \PYG{n}{y} \PYG{o}{\PYGZhy{}} \PYG{n}{b}\PYG{o}{/}\PYG{l+m+mi}{2}
+    \PYG{n}{d} \PYG{o}{=} \PYG{n}{x} \PYG{o}{*} \PYG{n}{x} \PYG{o}{+} \PYG{n}{y} \PYG{o}{*} \PYG{n}{y}
+    \PYG{n}{g} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{d} \PYG{o}{/} \PYG{p}{(}\PYG{l+m+mf}{2.0} \PYG{o}{*} \PYG{n}{sigma} \PYG{o}{**} \PYG{l+m+mi}{2}\PYG{p}{)))}
+    \PYG{c+c1}{\PYGZsh{} g = g/np.sum(g)}
+    \PYG{k}{return} \PYG{n}{g}
+
+
+\PYG{k}{def} \PYG{n+nf}{butterworth\PYGZus{}filter}\PYG{p}{(}\PYG{n}{b}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{center}\PYG{p}{,} \PYG{n}{n}\PYG{p}{,} \PYG{n}{sigma}\PYG{p}{):}
+    \PYG{n}{cx}\PYG{p}{,} \PYG{n}{cy} \PYG{o}{=} \PYG{n}{center}
+    \PYG{n}{x}\PYG{p}{,} \PYG{n}{y} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{meshgrid}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{a} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{a}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{b} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{b}\PYG{p}{))}
+    \PYG{n}{x} \PYG{o}{=} \PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{n}{cx}
+    \PYG{n}{y} \PYG{o}{=} \PYG{n}{y} \PYG{o}{\PYGZhy{}} \PYG{n}{cy}
+    \PYG{n}{d} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{x} \PYG{o}{*} \PYG{n}{x} \PYG{o}{+} \PYG{n}{y} \PYG{o}{*} \PYG{n}{y}\PYG{p}{)}
+    \PYG{n}{h} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{o}{/}\PYG{p}{((}\PYG{l+m+mi}{1}\PYG{o}{+}\PYG{p}{(}\PYG{n}{d}\PYG{o}{/}\PYG{n}{sigma}\PYG{p}{))}\PYG{o}{**}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{n}\PYG{p}{))}
+    \PYG{k}{return} \PYG{n}{h}
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZsq{}}\PYG{p}{:}
+
+    \PYG{n}{test\PYGZus{}input} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{],} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{],} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{],} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{]])}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{transform\PYGZus{}centering}\PYG{p}{(}\PYG{n}{test\PYGZus{}input}\PYG{p}{))}
+\end{Verbatim}
