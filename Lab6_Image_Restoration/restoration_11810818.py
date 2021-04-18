@@ -23,6 +23,7 @@ def atmosphere_turbulence(shape, k):
 def full_inverse_filtering_11810818(input_image):
     input_image = io.imread(input_image + ".tif")
     m, n = input_image.shape
+    input_image = np.pad(input_image, ((0, m), (0, n)))
 
     filter = atmosphere_turbulence(input_image.shape, 0.0025)
     inverse_filter = 1/filter
@@ -36,21 +37,23 @@ def full_inverse_filtering_11810818(input_image):
     return output_image
 
 def radially_limited_inverse_filtering_11810818(input_image, sigma):
+    input_name = input_image
     input_image = io.imread(input_image + ".tif")
     m, n = input_image.shape
+    # input_image = np.pad(input_image, ((0, m), (0, n)))
+    # m, n = input_image.shape
 
     filter = atmosphere_turbulence(input_image.shape, 0.0025)
     inverse_filter = 1 / filter
-    g = ee.butterworth_filter(m, n, [m/2, n/2], 10, sigma)
+    g = ee.gaussian_filter(m,n,sigma)
 
     input_image = np.fft.fft2(input_image)
-    output_image = np.abs(input_image)
-    mplimg.imsave("image_test.png",
-                  np.abs(input_image),
-                  cmap=cm.gray)
-
     input_image = np.fft.fftshift(input_image)
 
+    output_image = np.abs(input_image)
+    mplimg.imsave(str(input_name) + "_spectrum.png",
+                  np.abs(output_image),
+                  cmap=cm.gray)
 
     input_image = input_image * inverse_filter * g
     input_image = np.fft.fftshift(input_image)
@@ -61,8 +64,10 @@ def radially_limited_inverse_filtering_11810818(input_image, sigma):
 def wiener_filter_11810818(input_image, sigma, k):
     input_image = io.imread(input_image + ".tif")
     m, n = input_image.shape
+    # input_image = np.pad(input_image, ((0, m), (0, n)))
+    # m, n = input_image.shape
 
-    g = ee.gaussian_filter(m, n, 30)
+    g = ee.gaussian_filter(m, n, sigma)
     filter = atmosphere_turbulence(input_image.shape, 0.0025)
 
     f = ((1/filter)*(filter**2/(filter**2 + k*np.ones([m, n])))) * g
@@ -73,6 +78,8 @@ def wiener_filter_11810818(input_image, sigma, k):
     output_image = np.fft.fftshift(output_image)
     output_image = np.fft.ifft2(output_image)
     output_image = np.abs(output_image)
+
+    return output_image
 
 
 if __name__ == '__main__':
@@ -85,13 +92,19 @@ if __name__ == '__main__':
                   cmap=cm.gray)
     print("Finish processing full inverse filtering")
 
-    # for i in [40, 50, 60, 70, 80, 90, 100]:
-    for i in [70]:
+    for i in [10, 30, 35, 40, 45]:
         output_name = "plots/" + str(input_image) + "_radially_limited" + str(i) + ".png"
         output_image = radially_limited_inverse_filtering_11810818(input_image, i)
         mplimg.imsave(output_name,
                       output_image,
                       cmap=cm.gray)
-    print("Finish processing full inverse filtering")
+    print("Finish processing radially limited filtering")
 
-    print("Finish processing full inverse filtering")
+    for sigma in [50, 60, 70]:
+        for K in [0.01, 0.05, 0.1, 0.2, 0.5, 0.7]:
+            output_name = "plots/" + str(input_image) + "_wiener_" + str(sigma) + "_" + str(K) + ".png"
+            output_image = wiener_filter_11810818(input_image, sigma, K)
+            mplimg.imsave(output_name,
+                          output_image,
+                          cmap=cm.gray)
+    print("Finish processing wiener filtering")

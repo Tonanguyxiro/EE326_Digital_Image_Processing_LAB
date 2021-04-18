@@ -7,9 +7,10 @@ from skimage import io, data
 import math
 from scipy import interpolate
 import matplotlib.pyplot as plt
-
+from numba import njit,prange
 
 # General
+
 def format_image(input_image):
     output_image = input_image
     output_image -= np.min(output_image)
@@ -153,7 +154,7 @@ def centering(size):
         mul1 *= -1
     return centering_matrix
 
-
+@njit
 def generating_from_spatial_filter(input_filter, P, Q):
     output_filter = np.zeros(P, Q)
 
@@ -181,6 +182,45 @@ def butterworth_filter(b, a, center, n, sigma):
 
 
 # LAB 6
+@njit(parallel=True)
+def adaptive_filter(input_image, n_size, smax):
+    output_image = np.zeros(input_image.shape, dtype=np.uint8)
+    m, n = input_image.shape
 
+    for i in prange(m):
+        for j in prange(n):
+            n_size_2 = n_size
 
+            while True:
+                step = (int)((n_size_2 - 1) / 2)
+                pixels = np.zeros(n_size_2 * n_size_2)
+
+                for i2 in range(n_size_2):
+                    for j2 in range(n_size_2):
+                        if i - step + i2 >= 0 \
+                                and i - step + i2 < input_image.shape[0] \
+                                and j - step + j2 >= 0 \
+                                and j - step + j2 < input_image.shape[0]:
+                            pixels[j2 * n_size_2 + i2] = input_image[i - step + i2, j - step + j2]
+
+                pixels_sorted = np.sort(pixels)
+                med = (int)((n_size_2 * n_size_2-1)/2)
+                a1 = pixels_sorted[med] - pixels_sorted[0]
+                a2 = pixels_sorted[med] - pixels_sorted[n_size_2 * n_size_2-1]
+                if(a1>0 and a2<0):
+                    b1 = input_image[i, j] - pixels_sorted[0]
+                    b2 = input_image[i, j] - pixels_sorted[n_size_2 * n_size_2-1]
+                    if(b1>0 and b2<0):
+                        output_image[i, j] = pixels[med]
+                    else:
+                        output_image[i, j] = pixels_sorted[med]
+                    break
+                else:
+                    if(n_size_2 < smax):
+                        n_size_2 += 2
+                    else:
+                        output_image[i, j] = pixels_sorted[med]
+                        break
+
+    return output_image
 

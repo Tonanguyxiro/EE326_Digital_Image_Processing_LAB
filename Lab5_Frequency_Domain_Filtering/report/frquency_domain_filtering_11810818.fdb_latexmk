@@ -1,9 +1,9 @@
 # Fdb version 3
-["xdvipdfmx"] 1617374345 "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.xdv" "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.pdf" "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818" 1617374369
+["xdvipdfmx"] 1617374345 "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.xdv" "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.pdf" "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818" 1618715837
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.xdv" 1617374345 89668 44a8a0cf4202c6053bdfc0e6b5813d2e "xelatex"
   (generated)
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.pdf"
-["xelatex"] 1617374343 "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.tex" "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.xdv" "frquency_domain_filtering_11810818" 1617374369
+["xelatex"] 1617374343 "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.tex" "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.xdv" "frquency_domain_filtering_11810818" 1618715837
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_filter.png" 1617031661 232672 26cf282117997aaf32dfba1ab19890da ""
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_frequency.png" 1617031662 221968 e8a50b87e668ac9dfc5b65685aec86e6 ""
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_1_spatial.png" 1617015115 221968 e8a50b87e668ac9dfc5b65685aec86e6 ""
@@ -21,8 +21,8 @@
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_filter_160.png" 1617017284 73043 684a2a807a065256067f5609bb334ace ""
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_filter_30.png" 1617017283 14320 e81b81e7158e72999e7f38e236985ed6 ""
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_lowpass_filter_60.png" 1617017283 30730 4d9e7e9c571c159f220b69f19576e763 ""
-  "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_spectrum.png" 1617037141 6388 13f24b7dd41e2300b3f603e92d003f0f ""
-  "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_10.png" 1617037141 71409 a84db1b5ac2114ba012f2c956bbae4cb ""
+  "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_2_spectrum.png" 1618218675 6388 13f24b7dd41e2300b3f603e92d003f0f ""
+  "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_10.png" 1618218675 71409 a84db1b5ac2114ba012f2c956bbae4cb ""
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_120.png" 1617037142 31321 e5e4e7f11e4652f30acb3bd0ba0fc1af ""
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_30.png" 1617037141 67198 81fbb068d405ef3a6bc43a581a4b237c ""
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_1_60.png" 1617037142 78698 b9429a3d33cad82f599838327fe15383 ""
@@ -33,8 +33,8 @@
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_filter_1_30.png" 1617037141 43283 1a9137bf5d0a8fcf136cf8fb10b00c33 ""
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/Q5_3_spectrum_filtered_1_30.png" 1617037141 5438 c4577e31cfe47e55b30202943a4423bc ""
   "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.aux" 1617374345 5210 0e29622b8a1c58ccff6cc612a62431d3 ""
-  "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.tex" 1617374368 25923 cf534786d4b9ac6fc9a640d9140f4cac ""
-  "/dev/null" 1617374368 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.tex" 1618715834 25923 cf534786d4b9ac6fc9a640d9140f4cac ""
+  "/dev/null" 1618715837 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/palatino/pplb8t.tfm" 1136768653 3456 16dd534f88eb2bd21ebc7203786b436e ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/palatino/pplbi8t.tfm" 1136768653 3788 23f75d701871fed6ba2bf32f67976132 ""
@@ -152,15 +152,15 @@
   "code/gaussian_pass_11810818.py" 1617323890 1784 0810c17e6e9ef0aa8c793a776443b4dc ""
   "code/sobel_filter_11810818.py" 1617323890 2078 64fc5a54b0a51b4eb894ae3b0bcd185c ""
   "frquency_domain_filtering_11810818.aux" 1617374345 5210 0e29622b8a1c58ccff6cc612a62431d3 "xelatex"
-  "frquency_domain_filtering_11810818.tex" 1617374368 25923 cf534786d4b9ac6fc9a640d9140f4cac ""
+  "frquency_domain_filtering_11810818.tex" 1618715834 25923 cf534786d4b9ac6fc9a640d9140f4cac ""
   "plots/Q5_1.png" 1617367662 188200 656588b00780d0bdcb7d0def8f67dff8 ""
   "plots/Q5_2.png" 1617367634 22053 e1478d000d2c0874373491b7d5cf9683 ""
   "plots/Q5_3.png" 1617367674 41268 d5309fcbc0ed43f8841edcc71e913cec ""
   "style/fphw.cls" 1617323890 4377 938f212fab55ee928f635b45f4d4dafa ""
   "style/userpackage.tex" 1617353247 1151 cc596c0f903c617f834a18d2dd072255 ""
   (generated)
-  "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.xdv"
+  "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.log"
   "frquency_domain_filtering_11810818.aux"
   "frquency_domain_filtering_11810818.log"
+  "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.xdv"
   "frquency_domain_filtering_11810818.xdv"
-  "/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab5_Frequency_Domain_Filtering/report/frquency_domain_filtering_11810818.log"
