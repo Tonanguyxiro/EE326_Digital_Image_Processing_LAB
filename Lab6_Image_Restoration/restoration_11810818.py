@@ -44,20 +44,15 @@ def radially_limited_inverse_filtering_11810818(input_image, sigma):
     # m, n = input_image.shape
 
     filter = atmosphere_turbulence(input_image.shape, 0.0025)
-    inverse_filter = 1 / filter
-    g = ee.gaussian_filter(m,n,sigma)
+    inverse_filter = np.reciprocal(filter)
+    # g = ee.gaussian_filter(m,n,sigma)
+    g = ee.butterworth_filter(m, n, [m/2, n/2], 10, sigma)
 
     input_image = np.fft.fft2(input_image)
     input_image = np.fft.fftshift(input_image)
-
-    output_image = np.abs(input_image)
-    mplimg.imsave(str(input_name) + "_spectrum.png",
-                  np.abs(output_image),
-                  cmap=cm.gray)
-
     input_image = input_image * inverse_filter * g
-    input_image = np.fft.fftshift(input_image)
-    output_image = np.abs(np.fft.ifft2(input_image))
+    input_image = np.fft.ifftshift(input_image)
+    output_image = np.real(np.fft.ifft2(input_image))
 
     return output_image
 
@@ -85,23 +80,23 @@ def wiener_filter_11810818(input_image, sigma, k):
 if __name__ == '__main__':
 
     input_image = "Q6_2"
-    output_name = "plots/" + str(input_image) + "_full_inverse.png"
-    output_image = full_inverse_filtering_11810818(input_image)
-    mplimg.imsave(output_name,
-                  output_image,
-                  cmap=cm.gray)
-    print("Finish processing full inverse filtering")
+    # output_name = "plots/" + str(input_image) + "_full_inverse.png"
+    # output_image = full_inverse_filtering_11810818(input_image)
+    # mplimg.imsave(output_name,
+    #               output_image,
+    #               cmap=cm.gray)
+    # print("Finish processing full inverse filtering")
 
-    for i in [10, 30, 35, 40, 45]:
-        output_name = "plots/" + str(input_image) + "_radially_limited" + str(i) + ".png"
-        output_image = radially_limited_inverse_filtering_11810818(input_image, i)
-        mplimg.imsave(output_name,
-                      output_image,
-                      cmap=cm.gray)
-    print("Finish processing radially limited filtering")
+    # for i in [10, 30, 35, 40, 45, 50, 55, 60, 65, 70, 85]:
+    #     output_name = "plots/" + str(input_image) + "_radially_limited" + str(i) + ".png"
+    #     output_image = radially_limited_inverse_filtering_11810818(input_image, i)
+    #     mplimg.imsave(output_name,
+    #                   output_image,
+    #                   cmap=cm.gray)
+    # print("Finish processing radially limited filtering")
 
     for sigma in [50, 60, 70]:
-        for K in [0.01, 0.05, 0.1, 0.2, 0.5, 0.7]:
+        for K in [0.0000000001, 0.00000001, 0.000001, 0.0001, 0.01, 0.1]:
             output_name = "plots/" + str(input_image) + "_wiener_" + str(sigma) + "_" + str(K) + ".png"
             output_image = wiener_filter_11810818(input_image, sigma, K)
             mplimg.imsave(output_name,

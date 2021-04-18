@@ -22,12 +22,10 @@ def radially_limited_inverse_filtering_11810818(input_image, sigma):
     input_name = input_image
     input_image = io.imread(input_image + ".tiff")
     m, n = input_image.shape
-    # input_image = np.pad(input_image, ((0, m), (0, n)))
-    # m, n = input_image.shape
 
     filter = undergo(0.1, 0.1, m, n, 1)
     inverse_filter = np.reciprocal(filter)
-    g = ee.gaussian_filter(m, n, sigma)
+    g = ee.butterworth_filter(m, n, [m/2, n/2], 10, sigma)
 
     input_image = np.fft.fft2(input_image)
     input_image = np.fft.fftshift(input_image)
@@ -47,7 +45,7 @@ def wiener_filter_11810818(input_image, sigma, k):
     # input_image = np.pad(input_image, ((0, m), (0, n)))
     # m, n = input_image.shape
 
-    g = ee.gaussian_filter(m, n, sigma)
+    g = ee.butterworth_filter(m, n, [m/2, n/2], 10, sigma)
     filter = undergo(0.1, 0.1, m, n, 1)
 
     # f = ((1/filter)*(filter*np.conj(filter)/(filter*np.conj(filter) + k))) * g
@@ -106,8 +104,8 @@ if __name__ == '__main__':
                       cmap=cm.gray)
     print("Finish processing radially limited filtering")
 
-    for sigma in [70]:
-        for K in [0.00000025]:
+    for sigma in [40, 70, 100]:
+        for K in [0.00000001, 0.0001, 0.1]:
             output_name = "plots/" + str(input_image) + "_wiener_" + str(sigma) + "_" + str(K) + ".png"
             output_image = wiener_filter_11810818(input_image, sigma, K)
             mplimg.imsave(output_name,
