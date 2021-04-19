@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 import matplotlib.image as mplimg
 import EE326_SUSTech as ee
+import time
 
 
 def atmosphere_turbulence(shape, k):
@@ -87,19 +88,25 @@ if __name__ == '__main__':
     #               cmap=cm.gray)
     # print("Finish processing full inverse filtering")
 
-    # for i in [10, 30, 35, 40, 45, 50, 55, 60, 65, 70, 85]:
-    #     output_name = "plots/" + str(input_image) + "_radially_limited" + str(i) + ".png"
-    #     output_image = radially_limited_inverse_filtering_11810818(input_image, i)
-    #     mplimg.imsave(output_name,
-    #                   output_image,
-    #                   cmap=cm.gray)
-    # print("Finish processing radially limited filtering")
+    for i in [10, 30, 35, 40, 45, 50, 55, 60, 65, 70, 85]:
+        start = time.time()
+        output_name = "plots/" + str(input_image) + "_radially_limited" + str(i) + ".png"
+        output_image = radially_limited_inverse_filtering_11810818(input_image, i)
+        print(time.time() - start)
+        mplimg.imsave(output_name,
+                      output_image,
+                      cmap=cm.gray)
+
+    print("Finish processing radially limited filtering")
 
     for sigma in [50, 60, 70]:
         for K in [0.0000000001, 0.00000001, 0.000001, 0.0001, 0.01, 0.1]:
+            start = time.time()
             output_name = "plots/" + str(input_image) + "_wiener_" + str(sigma) + "_" + str(K) + ".png"
             output_image = wiener_filter_11810818(input_image, sigma, K)
+            print(time.time() - start)
             mplimg.imsave(output_name,
                           output_image,
                           cmap=cm.gray)
+
     print("Finish processing wiener filtering")

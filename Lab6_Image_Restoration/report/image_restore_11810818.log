@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2021.3.2)  19 APR 2021 00:13
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2021.3.2)  19 APR 2021 16:40
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -884,6 +884,19 @@ File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/
 File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_2_wiener_100_2.5e-05.png Graphic file (type bmp)
 </Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_2_wiener_100_2.5e-05.png>
  [9]
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_3_wiener_10_0.25.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_3_wiener_10_0.25.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_3_wiener_10_0.0025.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_3_wiener_10_0.0025.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_3_wiener_10_2.5e-05.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_3_wiener_10_2.5e-05.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_3_wiener_50_0.25.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_3_wiener_50_0.25.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_3_wiener_50_0.0025.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_3_wiener_50_0.0025.png>
+File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_3_wiener_50_2.5e-05.png Graphic file (type bmp)
+</Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/Q6_3_3_wiener_50_2.5e-05.png>
+ [10]
 File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/test_input.png Graphic file (type bmp)
 </Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/test_input.png>
 File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/test_input_burl.png Graphic file (type bmp)
@@ -892,22 +905,21 @@ File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/
 </Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/test_input_restore_abs.png>
 File: /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/test_input_restore_winber.png Graphic file (type bmp)
 </Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/plots/test_input_restore_winber.png>
- [10]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 701.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 749.
  (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [11] (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/report/image_restore_11810818.aux)
+) [11] [12] (/Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/report/image_restore_11810818.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12007 strings out of 476939
- 247148 string characters out of 5822581
- 577408 words of memory out of 5000000
- 31726 multiletter control sequences out of 15000+600000
+ 12056 strings out of 476939
+ 252685 string characters out of 5822581
+ 577538 words of memory out of 5000000
+ 31769 multiletter control sequences out of 15000+600000
  430239 words of font info for 82 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  90i,20n,91p,804b,630s stack positions out of 5000i,500n,10000p,500000b,80000s
 
-Output written on /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/report/image_restore_11810818.xdv (11 pages, 43584 bytes).
+Output written on /Users/tongyuan/Documents/Study/S6_Spring_2021/Digital_Imagine_Processing/EE326_Digital_Image_Processing_LAB/Lab6_Image_Restoration/report/image_restore_11810818.xdv (12 pages, 46232 bytes).

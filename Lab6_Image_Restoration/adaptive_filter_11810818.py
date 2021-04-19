@@ -6,16 +6,17 @@ from scipy import interpolate
 import matplotlib.pyplot as plt
 from matplotlib import cm
 import matplotlib.image as mplimg
+from numba import njit,prange
 import EE326_SUSTech as ee
+import time
 
-
+@njit(parallel=True)
 def adaptive_11810818(input_image, n_size, smax):
-    input_image = io.imread(input_image + ".tiff")
     output_image = np.zeros(input_image.shape, dtype=np.uint8)
     m, n = input_image.shape
 
-    for i in range(m):
-        for j in range(n):
+    for i in prange(m):
+        for j in prange(n):
             n_size_2 = n_size
 
             while True:
@@ -57,10 +58,12 @@ if __name__ == '__main__':
         , 3
         , 4
               ]:
+        start_time = time.time()
         input_image = "Q6_1_" + str(i)
         output_name = "plots/" + str(input_image) + "_adaptive.png"
+        input_image = io.imread(input_image + ".tiff")
         output_image = adaptive_11810818(input_image, 3, 20)
-
+        print(time.time() - start_time)
         mplimg.imsave(output_name,
                       output_image,
                       cmap=cm.gray)

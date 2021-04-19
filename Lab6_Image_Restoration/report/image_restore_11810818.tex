@@ -659,6 +659,54 @@ And we will apply radially limited inverse filter and wieber filter to the degre
 		\label{motion deblur of the figure}	
 	\end{figure}
 
+\begin{figure}[H]
+	\centering
+		\begin{subfigure}[b]{.3\textwidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_10_0.25.png}
+			\caption{$\sigma=10, K=0.25$}
+			\label{Q6_3_3_wiener_10_0.25}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{.3\textwidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_10_0.0025.png}
+			\caption{$\sigma=10, K=0.0025$}
+			\label{Q6_3_3_wiener_10_0.0025}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{.3\textwidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_10_2.5e-05.png}
+			\caption{$\sigma=10, K=2.5 \times 10^{-5}$}
+			\label{Q6_3_3_wiener_10_2.5e-05}
+		\end{subfigure}
+	\vfill
+		\begin{subfigure}[b]{.3\textwidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_50_0.25.png}
+			\caption{$\sigma=50, K=0.25$}
+			\label{Q6_3_3_wiener_50_0.25}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{.3\textwidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_50_0.0025.png}
+			\caption{$\sigma=50, K=0.0025$}
+			\label{Q6_3_3_wiener_50_0.0025}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{.3\textwidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_50_2.5e-05.png}
+			\caption{$\sigma=50, K=2.5 \times 10^{-5}$}
+			\label{Q6_3_3_wiener_50_2.5e-05}
+		\end{subfigure}
+	
+	\caption{motion deblur of the figure with more noise}
+	\label{motion deblur of the figure with more noise}	
+\end{figure}
+
 \subsection*{Discussion}
 
 Fig \ref{Motion, radially limited inverse filter} indicate that we can't use radially limited inverse filter to restore the image. Here a unit impluse is used to estimate the behavior of the filters
