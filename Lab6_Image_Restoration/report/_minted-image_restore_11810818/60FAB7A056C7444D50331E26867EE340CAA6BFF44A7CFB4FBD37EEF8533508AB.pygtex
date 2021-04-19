@@ -1,0 +1,114 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy.fft}
+\PYG{k+kn}{from} \PYG{n+nn}{skimage} \PYG{k+kn}{import} \PYG{n}{io}\PYG{p}{,} \PYG{n}{data}
+\PYG{k+kn}{import} \PYG{n+nn}{math}
+\PYG{k+kn}{from} \PYG{n+nn}{scipy} \PYG{k+kn}{import} \PYG{n}{interpolate}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+\PYG{k+kn}{from} \PYG{n+nn}{matplotlib} \PYG{k+kn}{import} \PYG{n}{cm}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.image} \PYG{k}{as} \PYG{n+nn}{mplimg}
+\PYG{k+kn}{import} \PYG{n+nn}{EE326\PYGZus{}SUSTech} \PYG{k}{as} \PYG{n+nn}{ee}
+\PYG{k+kn}{import} \PYG{n+nn}{time}
+
+
+\PYG{k}{def} \PYG{n+nf}{atmosphere\PYGZus{}turbulence}\PYG{p}{(}\PYG{n}{shape}\PYG{p}{,} \PYG{n}{k}\PYG{p}{):}
+    \PYG{n}{col}\PYG{p}{,} \PYG{n}{row} \PYG{o}{=} \PYG{n}{shape}
+    \PYG{n}{u}\PYG{p}{,} \PYG{n}{v} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{meshgrid}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{col}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{col}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{row}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{row}\PYG{p}{))}
+    \PYG{n}{u} \PYG{o}{=} \PYG{n}{u} \PYG{o}{\PYGZhy{}} \PYG{n}{col} \PYG{o}{/} \PYG{l+m+mi}{2}
+    \PYG{n}{v} \PYG{o}{=} \PYG{n}{v} \PYG{o}{\PYGZhy{}} \PYG{n}{row} \PYG{o}{/} \PYG{l+m+mi}{2}
+    \PYG{n}{d} \PYG{o}{=} \PYG{n}{u} \PYG{o}{*} \PYG{n}{u} \PYG{o}{+} \PYG{n}{v} \PYG{o}{*} \PYG{n}{v}
+    \PYG{n}{h} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{k} \PYG{o}{*} \PYG{p}{(}\PYG{n}{d} \PYG{o}{**} \PYG{p}{(}\PYG{l+m+mi}{5}\PYG{o}{/}\PYG{l+m+mi}{6}\PYG{p}{))))}
+
+    \PYG{k}{return} \PYG{n}{h}
+
+
+\PYG{k}{def} \PYG{n+nf}{full\PYGZus{}inverse\PYGZus{}filtering\PYGZus{}11810818}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{):}
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{io}\PYG{o}{.}\PYG{n}{imread}\PYG{p}{(}\PYG{n}{input\PYGZus{}image} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}.tif\PYGZdq{}}\PYG{p}{)}
+    \PYG{n}{m}\PYG{p}{,} \PYG{n}{n} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{pad}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{p}{((}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{m}\PYG{p}{),} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{n}\PYG{p}{)))}
+
+    \PYG{n+nb}{filter} \PYG{o}{=} \PYG{n}{atmosphere\PYGZus{}turbulence}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{,} \PYG{l+m+mf}{0.0025}\PYG{p}{)}
+    \PYG{n}{inverse\PYGZus{}filter} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n+nb}{filter}
+
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{fft}\PYG{o}{.}\PYG{n}{fft2}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{)}
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{fft}\PYG{o}{.}\PYG{n}{fftshift}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{)}
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{o}{*}\PYG{n}{inverse\PYGZus{}filter}
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{fft}\PYG{o}{.}\PYG{n}{fftshift}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{)}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{fft}\PYG{o}{.}\PYG{n}{ifft2}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{))}
+
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}image}
+
+\PYG{k}{def} \PYG{n+nf}{radially\PYGZus{}limited\PYGZus{}inverse\PYGZus{}filtering\PYGZus{}11810818}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{n}{sigma}\PYG{p}{):}
+    \PYG{n}{input\PYGZus{}name} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{io}\PYG{o}{.}\PYG{n}{imread}\PYG{p}{(}\PYG{n}{input\PYGZus{}image} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}.tif\PYGZdq{}}\PYG{p}{)}
+    \PYG{n}{m}\PYG{p}{,} \PYG{n}{n} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}
+    \PYG{c+c1}{\PYGZsh{} input\PYGZus{}image = np.pad(input\PYGZus{}image, ((0, m), (0, n)))}
+    \PYG{c+c1}{\PYGZsh{} m, n = input\PYGZus{}image.shape}
+
+    \PYG{n+nb}{filter} \PYG{o}{=} \PYG{n}{atmosphere\PYGZus{}turbulence}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{,} \PYG{l+m+mf}{0.0025}\PYG{p}{)}
+    \PYG{n}{inverse\PYGZus{}filter} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{reciprocal}\PYG{p}{(}\PYG{n+nb}{filter}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} g = ee.gaussian\PYGZus{}filter(m,n,sigma)}
+    \PYG{n}{g} \PYG{o}{=} \PYG{n}{ee}\PYG{o}{.}\PYG{n}{butterworth\PYGZus{}filter}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,} \PYG{n}{n}\PYG{p}{,} \PYG{p}{[}\PYG{n}{m}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{n}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{],} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{n}{sigma}\PYG{p}{)}
+
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{fft}\PYG{o}{.}\PYG{n}{fft2}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{)}
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{fft}\PYG{o}{.}\PYG{n}{fftshift}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{)}
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{input\PYGZus{}image} \PYG{o}{*} \PYG{n}{inverse\PYGZus{}filter} \PYG{o}{*} \PYG{n}{g}
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{fft}\PYG{o}{.}\PYG{n}{ifftshift}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{)}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{real}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{fft}\PYG{o}{.}\PYG{n}{ifft2}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{))}
+
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}image}
+
+\PYG{k}{def} \PYG{n+nf}{wiener\PYGZus{}filter\PYGZus{}11810818}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{n}{sigma}\PYG{p}{,} \PYG{n}{k}\PYG{p}{):}
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{io}\PYG{o}{.}\PYG{n}{imread}\PYG{p}{(}\PYG{n}{input\PYGZus{}image} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}.tif\PYGZdq{}}\PYG{p}{)}
+    \PYG{n}{m}\PYG{p}{,} \PYG{n}{n} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}
+    \PYG{c+c1}{\PYGZsh{} input\PYGZus{}image = np.pad(input\PYGZus{}image, ((0, m), (0, n)))}
+    \PYG{c+c1}{\PYGZsh{} m, n = input\PYGZus{}image.shape}
+
+    \PYG{n}{g} \PYG{o}{=} \PYG{n}{ee}\PYG{o}{.}\PYG{n}{gaussian\PYGZus{}filter}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,} \PYG{n}{n}\PYG{p}{,} \PYG{n}{sigma}\PYG{p}{)}
+    \PYG{n+nb}{filter} \PYG{o}{=} \PYG{n}{atmosphere\PYGZus{}turbulence}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{,} \PYG{l+m+mf}{0.0025}\PYG{p}{)}
+
+    \PYG{n}{f} \PYG{o}{=} \PYG{p}{((}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n+nb}{filter}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n+nb}{filter}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{/}\PYG{p}{(}\PYG{n+nb}{filter}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{+} \PYG{n}{k}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{ones}\PYG{p}{([}\PYG{n}{m}\PYG{p}{,} \PYG{n}{n}\PYG{p}{]))))} \PYG{o}{*} \PYG{n}{g}
+
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{fft}\PYG{o}{.}\PYG{n}{fft2}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{)}
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{fft}\PYG{o}{.}\PYG{n}{fftshift}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{)}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{o}{*}\PYG{n}{f}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{fft}\PYG{o}{.}\PYG{n}{fftshift}\PYG{p}{(}\PYG{n}{output\PYGZus{}image}\PYG{p}{)}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{fft}\PYG{o}{.}\PYG{n}{ifft2}\PYG{p}{(}\PYG{n}{output\PYGZus{}image}\PYG{p}{)}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{output\PYGZus{}image}\PYG{p}{)}
+
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}image}
+
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZsq{}}\PYG{p}{:}
+
+    \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}Q6\PYGZus{}2\PYGZdq{}}
+    \PYG{c+c1}{\PYGZsh{} output\PYGZus{}name = \PYGZdq{}plots/\PYGZdq{} + str(input\PYGZus{}image) + \PYGZdq{}\PYGZus{}full\PYGZus{}inverse.png\PYGZdq{}}
+    \PYG{c+c1}{\PYGZsh{} output\PYGZus{}image = full\PYGZus{}inverse\PYGZus{}filtering\PYGZus{}11810818(input\PYGZus{}image)}
+    \PYG{c+c1}{\PYGZsh{} mplimg.imsave(output\PYGZus{}name,}
+    \PYG{c+c1}{\PYGZsh{}               output\PYGZus{}image,}
+    \PYG{c+c1}{\PYGZsh{}               cmap=cm.gray)}
+    \PYG{c+c1}{\PYGZsh{} print(\PYGZdq{}Finish processing full inverse filtering\PYGZdq{})}
+
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{35}\PYG{p}{,} \PYG{l+m+mi}{40}\PYG{p}{,} \PYG{l+m+mi}{45}\PYG{p}{,} \PYG{l+m+mi}{50}\PYG{p}{,} \PYG{l+m+mi}{55}\PYG{p}{,} \PYG{l+m+mi}{60}\PYG{p}{,} \PYG{l+m+mi}{65}\PYG{p}{,} \PYG{l+m+mi}{70}\PYG{p}{,} \PYG{l+m+mi}{85}\PYG{p}{]:}
+        \PYG{n}{start} \PYG{o}{=} \PYG{n}{time}\PYG{o}{.}\PYG{n}{time}\PYG{p}{()}
+        \PYG{n}{output\PYGZus{}name} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}plots/\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}\PYGZus{}radially\PYGZus{}limited\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}.png\PYGZdq{}}
+        \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{radially\PYGZus{}limited\PYGZus{}inverse\PYGZus{}filtering\PYGZus{}11810818}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{n}{i}\PYG{p}{)}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{time}\PYG{o}{.}\PYG{n}{time}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{n}{start}\PYG{p}{)}
+        \PYG{n}{mplimg}\PYG{o}{.}\PYG{n}{imsave}\PYG{p}{(}\PYG{n}{output\PYGZus{}name}\PYG{p}{,}
+                      \PYG{n}{output\PYGZus{}image}\PYG{p}{,}
+                      \PYG{n}{cmap}\PYG{o}{=}\PYG{n}{cm}\PYG{o}{.}\PYG{n}{gray}\PYG{p}{)}
+
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Finish processing radially limited filtering\PYGZdq{}}\PYG{p}{)}
+
+    \PYG{k}{for} \PYG{n}{sigma} \PYG{o+ow}{in} \PYG{p}{[}\PYG{l+m+mi}{50}\PYG{p}{,} \PYG{l+m+mi}{60}\PYG{p}{,} \PYG{l+m+mi}{70}\PYG{p}{]:}
+        \PYG{k}{for} \PYG{n}{K} \PYG{o+ow}{in} \PYG{p}{[}\PYG{l+m+mf}{0.0000000001}\PYG{p}{,} \PYG{l+m+mf}{0.00000001}\PYG{p}{,} \PYG{l+m+mf}{0.000001}\PYG{p}{,} \PYG{l+m+mf}{0.0001}\PYG{p}{,} \PYG{l+m+mf}{0.01}\PYG{p}{,} \PYG{l+m+mf}{0.1}\PYG{p}{]:}
+            \PYG{n}{start} \PYG{o}{=} \PYG{n}{time}\PYG{o}{.}\PYG{n}{time}\PYG{p}{()}
+            \PYG{n}{output\PYGZus{}name} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}plots/\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}\PYGZus{}wiener\PYGZus{}\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{sigma}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}\PYGZus{}\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{K}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}.png\PYGZdq{}}
+            \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{wiener\PYGZus{}filter\PYGZus{}11810818}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{n}{sigma}\PYG{p}{,} \PYG{n}{K}\PYG{p}{)}
+            \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{time}\PYG{o}{.}\PYG{n}{time}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{n}{start}\PYG{p}{)}
+            \PYG{n}{mplimg}\PYG{o}{.}\PYG{n}{imsave}\PYG{p}{(}\PYG{n}{output\PYGZus{}name}\PYG{p}{,}
+                          \PYG{n}{output\PYGZus{}image}\PYG{p}{,}
+                          \PYG{n}{cmap}\PYG{o}{=}\PYG{n}{cm}\PYG{o}{.}\PYG{n}{gray}\PYG{p}{)}
+
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Finish processing wiener filtering\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

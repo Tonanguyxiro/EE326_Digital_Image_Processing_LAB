@@ -241,7 +241,9 @@ In this lab, there are three tasks will be performed.
 
 	\subsection*{Discussion}
 
-	From the result we found that, as the intencity of the noise increase, some noise in relatively low frequency domain will remain in the image, that is because the noise have cover most of the information in the image, so some information cannot be restored. And compare two differnet method, we found that the adaptive filter cause less damage to the details.
+	From the result we found that, as the intencity of the noise increase, some noise in relatively low frequency domain will remain in the image, that is because the noise have cover most of the information in the image, so some information cannot be restored. 
+
+	Compare two differnet method, we found that the adaptive filter cause less damage to the details. Previous study had proved that filter with larger size have better ability to reduce the noise but may cause change of some features, the adaptive filter has overcome this problem, provides a method with better noise reducing ability and less image damage.
 	
 
 \section*{Task II: Image Restoration}
@@ -407,7 +409,11 @@ The result shows that full inverse filter is mot capable for most of the case du
 
 Fig \ref{redially limited inverse filter} shows that $\sigma=60$ can be a proper cut off frquency for the filter, when $\sigma$ keeps increase, the high frequency noise will appear again, when $\sigma$ keeps decrease, the details in the image will also be filtered.
 
-Fig \ref{Fitered by wiener filter} shows that $\sigma=60, K = 10^{-6}$can be a proper pair to restore the image by wiener filter, comparing between each image in the image set, when K is decreasing, more details in the image will be restored while the noise increase, that because the detail of the image and noise are similar somehow, so when less detail is filtered, less nise will be filtered. The adjustment of $\sigma$ has been discussed in last paragraph. 
+Fig \ref{Fitered by wiener filter} shows that $\sigma=60, K = 10^{-4}$can be a proper pair to restore the image by wiener filter, comparing between each image in the image set, when K is decreasing, more details in the image will be restored while the noise increase, that because the detail of the image and noise are similar somehow, so when less detail is filtered, less nise will be filtered. The adjustment of $\sigma$ has been discussed in last paragraph. 
+
+Compare between two filters, we found that obviously wiener filter shown better performance, one possiable reason can be that during the store of the image, some information, such as phase, lost, so the inverse filter can't restore the information perfectly. But for wiener filter, such kind of information loss can be treated as noise and can be reduced.
+
+
 
 \section*{Task III: Motion Debluring}
 
@@ -659,53 +665,53 @@ And we will apply radially limited inverse filter and wieber filter to the degre
 		\label{motion deblur of the figure}	
 	\end{figure}
 
-\begin{figure}[H]
-	\centering
-		\begin{subfigure}[b]{.3\textwidth}
-			\centering
-			\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_10_0.25.png}
-			\caption{$\sigma=10, K=0.25$}
-			\label{Q6_3_3_wiener_10_0.25}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}[b]{.3\textwidth}
-			\centering
-			\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_10_0.0025.png}
-			\caption{$\sigma=10, K=0.0025$}
-			\label{Q6_3_3_wiener_10_0.0025}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}[b]{.3\textwidth}
-			\centering
-			\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_10_2.5e-05.png}
-			\caption{$\sigma=10, K=2.5 \times 10^{-5}$}
-			\label{Q6_3_3_wiener_10_2.5e-05}
-		\end{subfigure}
-	\vfill
-		\begin{subfigure}[b]{.3\textwidth}
-			\centering
-			\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_50_0.25.png}
-			\caption{$\sigma=50, K=0.25$}
-			\label{Q6_3_3_wiener_50_0.25}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}[b]{.3\textwidth}
-			\centering
-			\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_50_0.0025.png}
-			\caption{$\sigma=50, K=0.0025$}
-			\label{Q6_3_3_wiener_50_0.0025}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}[b]{.3\textwidth}
-			\centering
-			\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_50_2.5e-05.png}
-			\caption{$\sigma=50, K=2.5 \times 10^{-5}$}
-			\label{Q6_3_3_wiener_50_2.5e-05}
-		\end{subfigure}
-	
-	\caption{motion deblur of the figure with more noise}
-	\label{motion deblur of the figure with more noise}	
-\end{figure}
+	\begin{figure}[H]
+		\centering
+			\begin{subfigure}[b]{.3\textwidth}
+				\centering
+				\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_10_0.25.png}
+				\caption{$\sigma=10, K=0.25$}
+				\label{Q6_3_3_wiener_10_0.25}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}[b]{.3\textwidth}
+				\centering
+				\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_10_0.0025.png}
+				\caption{$\sigma=10, K=0.0025$}
+				\label{Q6_3_3_wiener_10_0.0025}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}[b]{.3\textwidth}
+				\centering
+				\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_10_2.5e-05.png}
+				\caption{$\sigma=10, K=2.5 \times 10^{-5}$}
+				\label{Q6_3_3_wiener_10_2.5e-05}
+			\end{subfigure}
+		\vfill
+			\begin{subfigure}[b]{.3\textwidth}
+				\centering
+				\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_50_0.25.png}
+				\caption{$\sigma=50, K=0.25$}
+				\label{Q6_3_3_wiener_50_0.25}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}[b]{.3\textwidth}
+				\centering
+				\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_50_0.0025.png}
+				\caption{$\sigma=50, K=0.0025$}
+				\label{Q6_3_3_wiener_50_0.0025}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}[b]{.3\textwidth}
+				\centering
+				\includegraphics[width=0.9\linewidth]{Q6_3_3_wiener_50_2.5e-05.png}
+				\caption{$\sigma=50, K=2.5 \times 10^{-5}$}
+				\label{Q6_3_3_wiener_50_2.5e-05}
+			\end{subfigure}
+		
+		\caption{motion deblur of the figure with more noise}
+		\label{motion deblur of the figure with more noise}	
+	\end{figure}
 
 \subsection*{Discussion}
 
@@ -752,7 +758,7 @@ Fig \ref{Motion wiener filter} shows the result after restored by wiener filter,
 
 In addition, the reason of the shadow have been analysised when we apply the system to the unit impluse.
 
-Then we try to apply the filter to image with noise, first we denoise the image by adaptive filter we introduced in section 1, after filtering 3-5 times, we get the filtered image with most of the noise removed, then the wiener filter is applyed to the image. In the result we found that $\sigma =50 K =0.25$, is a proper pair to restore the image, however, there is still a layer of noise in the result, that is because, the denoise process also create lot of noise with differnet motion to the image, so the noise is also enhanced during the filtering.
+Then we try to apply the filter to image with noise, first we denoise the image by adaptive filter we introduced in section 1, after filtering 3-5 times, we get the filtered image with most of the noise removed, then the wiener filter is applyed to the image. In the result we found that $\sigma =50 K =0.25$, is a proper pair to restore the image, however, there is still a layer of noise in the result, that is because, the denoise process also create lot of noise with differnet motion to the image, so the noise is also enhanced during the filtering. And for image with higher noise, as shown in Fig \ref{motion deblur of the figure with more noise}, the affect of such kind of noise become more severe.
 
 
 \section*{Conclusion}
@@ -760,5 +766,17 @@ Then we try to apply the filter to image with noise, first we denoise the image 
 In this lab, we studied adaptive image denoise and image reconstruction method, we found that the adaptive filter is a better method for image denoiseing due to its auto adjusting feature. 
 
 When we use image restoring technic, we have one or multiple parameters to adjust. For example, $\sigma$ in both radially limited inverse filter and wieber filter is used to reduce the high frequency noise, and K in wiener filter can adjust the reduced noise, when we adjust the parameters, one demision of image quality will increase while another decrease, so we need to find a balance between each demision of image quality.
+
+\newpage
+\section*{Appendix: Source Code}
+
+\inputminted[linenos,breaklines, breakafter=d, bgcolor=bg]{python}{code/adaptive_filter_11810818.py}
+
+\inputminted[linenos,breaklines, breakafter=d, bgcolor=bg]{python}{code/restoration_11810818.py}
+
+\inputminted[linenos,breaklines, breakafter=d, bgcolor=bg]{python}{code/undergo_denoise_11810818.py}
+
+\inputminted[linenos,breaklines, breakafter=d, bgcolor=bg]{python}{code/EE326_SUSTech.py}
+
 
 \end{document}

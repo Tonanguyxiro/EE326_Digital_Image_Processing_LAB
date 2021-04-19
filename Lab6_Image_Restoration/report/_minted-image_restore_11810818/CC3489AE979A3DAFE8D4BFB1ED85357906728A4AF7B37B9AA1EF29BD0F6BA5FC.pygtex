@@ -1,0 +1,73 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy.fft}
+\PYG{k+kn}{from} \PYG{n+nn}{skimage} \PYG{k+kn}{import} \PYG{n}{io}\PYG{p}{,} \PYG{n}{data}
+\PYG{k+kn}{import} \PYG{n+nn}{math}
+\PYG{k+kn}{from} \PYG{n+nn}{scipy} \PYG{k+kn}{import} \PYG{n}{interpolate}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+\PYG{k+kn}{from} \PYG{n+nn}{matplotlib} \PYG{k+kn}{import} \PYG{n}{cm}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.image} \PYG{k}{as} \PYG{n+nn}{mplimg}
+\PYG{k+kn}{from} \PYG{n+nn}{numba} \PYG{k+kn}{import} \PYG{n}{njit}\PYG{p}{,}\PYG{n}{prange}
+\PYG{k+kn}{import} \PYG{n+nn}{EE326\PYGZus{}SUSTech} \PYG{k}{as} \PYG{n+nn}{ee}
+\PYG{k+kn}{import} \PYG{n+nn}{time}
+
+\PYG{n+nd}{@njit}\PYG{p}{(}\PYG{n}{parallel}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+\PYG{k}{def} \PYG{n+nf}{adaptive\PYGZus{}11810818}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{n}{n\PYGZus{}size}\PYG{p}{,} \PYG{n}{smax}\PYG{p}{):}
+    \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{uint8}\PYG{p}{)}
+    \PYG{n}{m}\PYG{p}{,} \PYG{n}{n} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}
+
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{prange}\PYG{p}{(}\PYG{n}{m}\PYG{p}{):}
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n}{prange}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+            \PYG{n}{n\PYGZus{}size\PYGZus{}2} \PYG{o}{=} \PYG{n}{n\PYGZus{}size}
+
+            \PYG{k}{while} \PYG{k+kc}{True}\PYG{p}{:}
+                \PYG{n}{step} \PYG{o}{=} \PYG{p}{(}\PYG{n+nb}{int}\PYG{p}{)((}\PYG{n}{n\PYGZus{}size\PYGZus{}2} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{)}
+                \PYG{n}{pixels} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{n\PYGZus{}size\PYGZus{}2} \PYG{o}{*} \PYG{n}{n\PYGZus{}size\PYGZus{}2}\PYG{p}{)}
+
+                \PYG{k}{for} \PYG{n}{i2} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n\PYGZus{}size\PYGZus{}2}\PYG{p}{):}
+                    \PYG{k}{for} \PYG{n}{j2} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n\PYGZus{}size\PYGZus{}2}\PYG{p}{):}
+                        \PYG{k}{if} \PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{step} \PYG{o}{+} \PYG{n}{i2} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0} \PYGZbs{}
+                                \PYG{o+ow}{and} \PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{step} \PYG{o}{+} \PYG{n}{i2} \PYG{o}{\PYGZlt{}} \PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYGZbs{}
+                                \PYG{o+ow}{and} \PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{n}{step} \PYG{o}{+} \PYG{n}{j2} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0} \PYGZbs{}
+                                \PYG{o+ow}{and} \PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{n}{step} \PYG{o}{+} \PYG{n}{j2} \PYG{o}{\PYGZlt{}} \PYG{n}{input\PYGZus{}image}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]:}
+                            \PYG{n}{pixels}\PYG{p}{[}\PYG{n}{j2} \PYG{o}{*} \PYG{n}{n\PYGZus{}size\PYGZus{}2} \PYG{o}{+} \PYG{n}{i2}\PYG{p}{]} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{step} \PYG{o}{+} \PYG{n}{i2}\PYG{p}{,} \PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{n}{step} \PYG{o}{+} \PYG{n}{j2}\PYG{p}{]}
+
+                \PYG{n}{pixels\PYGZus{}sorted} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sort}\PYG{p}{(}\PYG{n}{pixels}\PYG{p}{)}
+                \PYG{n}{med} \PYG{o}{=} \PYG{p}{(}\PYG{n+nb}{int}\PYG{p}{)((}\PYG{n}{n\PYGZus{}size\PYGZus{}2} \PYG{o}{*} \PYG{n}{n\PYGZus{}size\PYGZus{}2}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{)}
+                \PYG{n}{a1} \PYG{o}{=} \PYG{n}{pixels\PYGZus{}sorted}\PYG{p}{[}\PYG{n}{med}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{pixels\PYGZus{}sorted}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+                \PYG{n}{a2} \PYG{o}{=} \PYG{n}{pixels\PYGZus{}sorted}\PYG{p}{[}\PYG{n}{med}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{pixels\PYGZus{}sorted}\PYG{p}{[}\PYG{n}{n\PYGZus{}size\PYGZus{}2} \PYG{o}{*} \PYG{n}{n\PYGZus{}size\PYGZus{}2}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+                \PYG{k}{if}\PYG{p}{(}\PYG{n}{a1}\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{0} \PYG{o+ow}{and} \PYG{n}{a2}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{p}{):}
+                    \PYG{n}{b1} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{pixels\PYGZus{}sorted}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+                    \PYG{n}{b2} \PYG{o}{=} \PYG{n}{input\PYGZus{}image}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{pixels\PYGZus{}sorted}\PYG{p}{[}\PYG{n}{n\PYGZus{}size\PYGZus{}2} \PYG{o}{*} \PYG{n}{n\PYGZus{}size\PYGZus{}2}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+                    \PYG{k}{if}\PYG{p}{(}\PYG{n}{b1}\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{0} \PYG{o+ow}{and} \PYG{n}{b2}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{p}{):}
+                        \PYG{n}{output\PYGZus{}image}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{pixels}\PYG{p}{[}\PYG{n}{med}\PYG{p}{]}
+                    \PYG{k}{else}\PYG{p}{:}
+                        \PYG{n}{output\PYGZus{}image}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{pixels\PYGZus{}sorted}\PYG{p}{[}\PYG{n}{med}\PYG{p}{]}
+                    \PYG{k}{break}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{k}{if}\PYG{p}{(}\PYG{n}{n\PYGZus{}size\PYGZus{}2} \PYG{o}{\PYGZlt{}} \PYG{n}{smax}\PYG{p}{):}
+                        \PYG{n}{n\PYGZus{}size\PYGZus{}2} \PYG{o}{+=} \PYG{l+m+mi}{2}
+                    \PYG{k}{else}\PYG{p}{:}
+                        \PYG{n}{output\PYGZus{}image}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{pixels\PYGZus{}sorted}\PYG{p}{[}\PYG{n}{med}\PYG{p}{]}
+                        \PYG{k}{break}
+
+    \PYG{k}{return} \PYG{n}{output\PYGZus{}image}
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZsq{}}\PYG{p}{:}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{p}{[}\PYG{l+m+mi}{1}
+        \PYG{p}{,} \PYG{l+m+mi}{2}
+        \PYG{p}{,} \PYG{l+m+mi}{3}
+        \PYG{p}{,} \PYG{l+m+mi}{4}
+              \PYG{p}{]:}
+        \PYG{n}{start\PYGZus{}time} \PYG{o}{=} \PYG{n}{time}\PYG{o}{.}\PYG{n}{time}\PYG{p}{()}
+        \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}Q6\PYGZus{}1\PYGZus{}\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}
+        \PYG{n}{output\PYGZus{}name} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}plots/\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}\PYGZus{}adaptive.png\PYGZdq{}}
+        \PYG{n}{input\PYGZus{}image} \PYG{o}{=} \PYG{n}{io}\PYG{o}{.}\PYG{n}{imread}\PYG{p}{(}\PYG{n}{input\PYGZus{}image} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}.tiff\PYGZdq{}}\PYG{p}{)}
+        \PYG{n}{output\PYGZus{}image} \PYG{o}{=} \PYG{n}{adaptive\PYGZus{}11810818}\PYG{p}{(}\PYG{n}{input\PYGZus{}image}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{20}\PYG{p}{)}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{time}\PYG{o}{.}\PYG{n}{time}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{n}{start\PYGZus{}time}\PYG{p}{)}
+        \PYG{n}{mplimg}\PYG{o}{.}\PYG{n}{imsave}\PYG{p}{(}\PYG{n}{output\PYGZus{}name}\PYG{p}{,}
+                      \PYG{n}{output\PYGZus{}image}\PYG{p}{,}
+                      \PYG{n}{cmap}\PYG{o}{=}\PYG{n}{cm}\PYG{o}{.}\PYG{n}{gray}\PYG{p}{)}
+
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Finish processing \PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{i}\PYG{p}{))}
+\end{Verbatim}
